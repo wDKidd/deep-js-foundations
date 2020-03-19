@@ -1,7 +1,28 @@
 //Creates a tiny polyfill for Object.is
 
 if (!Object.is) {
+    Object.is = function ObjectIs(x, y) {
 
+        function isNegZero(x) {
+            // -0 will always return -Infinity when divided by 1
+            return x === 0 && 1 / x === -Infinity
+        }
+        function isNan(x) {
+            // NaN is not equal to itself
+            return x !== x
+        }
+        function imExact(x, y) {
+            return x === y;
+        }
+
+        if (isNan(x) && isNan(y)) {
+            return true
+        } else if (isNegZero(x) || isNegZero(y)) {
+            return isNegZero(x) && isNegZero(y)
+        } else if (imExact(x, y)) {
+            return true
+        }
+    }
 }
 
 // tests:
