@@ -15,10 +15,13 @@ if (!Object.is) {
             return x === y;
         }
 
+        var isNegZeroX = isNegZero(x)
+        var isNegZeroY = isNegZero(y)
+
         if (isNan(x) && isNan(y)) {
             return true
-        } else if (isNegZero(x) || isNegZero(y)) {
-            return isNegZero(x) && isNegZero(y)
+        } else if (isNegZeroX || iisNegZeroY) {
+            return isNegZeroX && isNegZeroY
         } else if (imExact(x, y)) {
             return true
         }
