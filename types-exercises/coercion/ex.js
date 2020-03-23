@@ -13,7 +13,7 @@ function isNonEmpty(input) {
     return input.trim().length >= 3
 }
 
-function isEmptyString(input) {
+function notEmptyString(input) {
     if (typeof input === 'string' && input.trim() === "") {
         return false;
     }
@@ -35,7 +35,7 @@ function hoursAttended(attended, length) {
         && isString(length) || isNumber(length)
         && attended >= 0
         && length >= 0) {
-        if (isEmptyString(attended) && isEmptyString(length)) {
+        if (notEmptyString(attended) && notEmptyString(length)) {
             attended = Number(attended)
             length = Number(length)
             //Check for NaNs
